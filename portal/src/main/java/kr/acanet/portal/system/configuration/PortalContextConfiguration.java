@@ -24,12 +24,10 @@ import org.apache.pluto.driver.services.container.FilterManagerServiceImpl;
 import org.apache.pluto.driver.services.container.PortalContextImpl;
 import org.apache.pluto.driver.services.container.PortletRequestContextServiceImpl;
 import org.apache.pluto.driver.services.container.PortletURLListenerServiceImpl;
-import org.apache.pluto.driver.services.impl.resource.PublicRenderParameterServiceImpl;
 import org.apache.pluto.driver.services.impl.resource.RenderConfigServiceImpl;
 import org.apache.pluto.driver.services.impl.resource.ResourceConfig;
 import org.apache.pluto.driver.services.impl.resource.SupportedModesServiceImpl;
 import org.apache.pluto.driver.services.impl.resource.SupportedWindowStateServiceImpl;
-import org.apache.pluto.driver.services.portal.PublicRenderParameterService;
 import org.apache.pluto.driver.services.portal.RenderConfigService;
 import org.apache.pluto.driver.services.portal.SupportedModesService;
 import org.apache.pluto.driver.services.portal.SupportedWindowStateService;
@@ -72,9 +70,7 @@ public class PortalContextConfiguration extends WebMvcConfigurerAdapter {
 				resourceConfigFactory(), 
 				renderService(), 
 				supportedModesService(), 
-				supportedWindowStatesService(), 
-				publicRenderParameterService(), 
-				portletContextService());
+				supportedWindowStatesService());
 	}
 	
 	@Bean
@@ -116,11 +112,11 @@ public class PortalContextConfiguration extends WebMvcConfigurerAdapter {
 		return new SupportedWindowStateServiceImpl(resourceConfigFactory(), portletContextService());
 	}
 	
-	@Bean
-	@Scope("singleton")
-	public PublicRenderParameterService publicRenderParameterService() {
-		return new PublicRenderParameterServiceImpl(renderService(), portletContextService());
-	}
+//	@Bean
+//	@Scope("singleton")
+//	public PublicRenderParameterService publicRenderParameterService() {
+//		return new PublicRenderParameterServiceImpl(renderService(), portletContextService());
+//	}
 	
 	//portal driver service configuration.
 	@Bean

@@ -16,9 +16,8 @@ implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 --%>
-<%@ page isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/portlet" prefix="portlet" %>
 <%@ taglib uri="http://portals.apache.org/pluto/portlet-el" prefix="portlet-el" %>
 
@@ -151,10 +150,10 @@ limitations under the License.
 </fmt:bundle> 
 
 <portlet:renderURL portletMode="help" var="deployerhelpURL">
-   <%-- needed el taglib to be able to use fmt:message value above --%>
-   <%-- portlet-el:param name="helpPage" value="${deployerHelp}"/ --%>
-	<portlet:param name="helpPage" value="${deployerHelp}"/>
+	<%-- needed el taglib to be able to use fmt:message value above --%>
+	<portlet-el:param name="helpPage" value="${deployerHelp}"/>
 </portlet:renderURL>
+
 <div>
 <a href='<c:out value="${deployerURL}"/>' target="_blank">Upload and deploy a new portlet war</a> 
 <a href='<c:out value="${deployerhelpURL}"/>'>Help</a>

@@ -16,17 +16,9 @@ implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 --%>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false" %>
-<%@page import="org.apache.pluto.driver.core.PortalRequestContext"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://portals.apache.org/pluto" prefix="pluto" %>
-<%@ page import="java.util.*,javax.portlet.*,org.apache.pluto.driver.url.*" %>
-<%@ page import="org.apache.pluto.driver.config.*,org.apache.pluto.driver.*" %>
-<%@ page import="org.apache.pluto.driver.util.*" %>
-<%@ page import="org.apache.pluto.container.*,javax.servlet.jsp.*" %>
 <% pageContext.setAttribute("now", new java.util.Date()); %>
 
 <!--
@@ -40,41 +32,14 @@ group (the left column) displays portlets with odd IDs, while the second group
 
 <head>
     <title>Pluto Portal</title>
-    <script type="text/javascript">
-       /**
-        * Initialization code for portlet hub
-        */
-       <%
-          PageState ps = new PageState(request);
-       %>
-       var portlet = portlet || {};
-       portlet.impl = portlet.impl || {};
-       portlet.impl.getInitData = function () {
-          return <%=ps.toJSONString()%>;
-       }
-       portlet.impl.getUrlBase = function () {
-          return '<%=response.encodeURL(ps.getUrlBase())%>';
-       }
+    <style type="text/css" title="currentStyle" media="screen">
+        @import "<c:out value="${pageContext.request.contextPath}"/>/css/pluto.css";
+        @import "<c:out value="${pageContext.request.contextPath}"/>/css/portlet-spec-1.0.css";
+        @import "<c:out value="${pageContext.request.contextPath}"/>/css/portlet-spec-2.0.css";
+    </style>
+    <script type="text/javascript"
+            src="<c:out value="${pageContext.request.contextPath}"/>/javascript/pluto.js">
     </script>
-
-    <c:if test="${empty dynamicResources}">
-      <!-- dynamic resources not available, adding static references -->
-      <script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/pluto.js"></script>
-      <script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/portletHubImpl.js"></script>
-      <script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/portlet.js"></script>
-      <style type="text/css" title="currentStyle" media="screen">
-          @import "<c:out value="${pageContext.request.contextPath}"/>/css/pluto.css";
-          @import "<c:out value="${pageContext.request.contextPath}"/>/css/portlet-spec-1.0.css";
-          @import "<c:out value="${pageContext.request.contextPath}"/>/css/portlet-spec-2.0.css";
-      </style>
-    </c:if>
-    <c:if test="${not empty dynamicResources}">
-      <!-- Adding dynamic resources -->
-      ${dynamicResources}
-    </c:if>
-  
-    <!-- Now include the head section markup provided by the portlet header processing methods -->
-    ${headMarkup}
 </head>
 
 <body>

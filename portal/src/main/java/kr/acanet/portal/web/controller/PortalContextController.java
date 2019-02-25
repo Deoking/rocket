@@ -12,21 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.pluto.container.PortletContainer;
 import org.apache.pluto.container.PortletContainerException;
-import org.apache.pluto.driver.AttributeKeys;
-import org.apache.pluto.driver.config.AdminConfiguration;
-import org.apache.pluto.driver.core.PortalRequestContext;
-import org.apache.pluto.driver.core.PortletWindowImpl;
-import org.apache.pluto.driver.services.portal.PageConfig;
-import org.apache.pluto.driver.services.portal.PortletWindowConfig;
-import org.apache.pluto.driver.services.portal.admin.DriverAdministrationException;
-import org.apache.pluto.driver.services.portal.admin.PortletRegistryAdminService;
-import org.apache.pluto.driver.url.PortalURL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.ServletConfigAware;
 import org.springframework.web.context.ServletContextAware;
+
+import kr.acanet.portal.driver.AttributeKeys;
+import kr.acanet.portal.driver.configuration.AdminConfiguration;
+import kr.acanet.portal.driver.core.PortalRequestContext;
+import kr.acanet.portal.driver.core.PortletWindowImpl;
+import kr.acanet.portal.driver.service.portal.PageConfig;
+import kr.acanet.portal.driver.service.portal.PortletWindowConfig;
+import kr.acanet.portal.driver.service.portal.admin.DriverAdministrationException;
+import kr.acanet.portal.driver.service.portal.admin.PortletRegistryAdminService;
+import kr.acanet.portal.driver.url.PortalURL;
 
 @Controller
 @RequestMapping("/portal")
@@ -156,9 +157,7 @@ public class PortalContextController implements ServletContextAware, ServletConf
 		}
 		// Otherwise (actionWindowConfig == null), handle the render request.
 		else {
-			if (logger.isDebugEnabled()) {
-				logger.debug("Processing render request.");
-			}
+			logger.debug("Processing render request.");
 			PageConfig pageConfig = portalURL.getPageConfig(servletContext);
 			if (pageConfig == null) {
 				String renderPath = (portalURL == null ? "" : portalURL.getRenderPath());
@@ -169,14 +168,10 @@ public class PortalContextController implements ServletContextAware, ServletConf
 
 			request.setAttribute(AttributeKeys.CURRENT_PAGE, pageConfig);
 			String uri = (pageConfig.getUri() != null) ? pageConfig.getUri() : DEFAULT_PAGE_URI;
-			if (logger.isDebugEnabled()) {
-				logger.debug("Dispatching to: " + uri);
-			}
+			logger.debug("Dispatching to: " + uri);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(uri);
 			dispatcher.forward(request, response);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Render request processed.\n\n");
-			}
+			logger.debug("Render request processed.\n\n");
 		}
 	}
 

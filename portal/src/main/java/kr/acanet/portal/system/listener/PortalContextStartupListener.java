@@ -6,14 +6,15 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.pluto.container.PortletContainer;
 import org.apache.pluto.container.PortletContainerException;
-import org.apache.pluto.driver.AttributeKeys;
-import org.apache.pluto.driver.config.AdminConfiguration;
-import org.apache.pluto.driver.config.DriverConfiguration;
-import org.apache.pluto.driver.config.DriverConfigurationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
+
+import kr.acanet.portal.driver.AttributeKeys;
+import kr.acanet.portal.driver.configuration.AdminConfiguration;
+import kr.acanet.portal.driver.configuration.DriverConfiguration;
+import kr.acanet.portal.driver.configuration.DriverConfigurationException;
 
 /**
  * 스프링 ContextLoaderListner를 확장, ServletContextListener를 구현한 포털컨텍스트 초기화 리스너.

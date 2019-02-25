@@ -32,7 +32,7 @@ limitations under the License.
   <!-- Insert the rendering of a portlet -->
   <tag>
     <name>portlet</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletTag</tagclass>
     <bodycontent>JSP</bodycontent>
     <attribute>
       <name>portletId</name>
@@ -43,7 +43,7 @@ limitations under the License.
 
   <tag>
     <name>modeAnchor</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletModeAnchorTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletModeAnchorTag</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
       <name>portletMode</name>
@@ -54,13 +54,13 @@ limitations under the License.
 
   <tag>
     <name>modeDropDown</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletModeDropDownTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletModeDropDownTag</tagclass>
     <bodycontent>empty</bodycontent>
   </tag>
   
   <tag>
     <name>windowStateAnchor</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletWindowStateAnchorTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletWindowStateAnchorTag</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
       <name>windowState</name>
@@ -76,13 +76,13 @@ limitations under the License.
      
   <tag>
     <name>title</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletTitleTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletTitleTag</tagclass>
     <bodycontent>empty</bodycontent>
   </tag>
 
   <tag>
     <name>url</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletPortalURLTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletPortalURLTag</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
       <name>portletMode</name>
@@ -98,13 +98,13 @@ limitations under the License.
 
   <tag>
     <name>render</name>
-    <tagclass>org.apache.pluto.driver.tags.PortletRenderTag</tagclass>
+    <tagclass>kr.acanet.portal.driver.tag.PortletRenderTag</tagclass>
     <bodycontent>empty</bodycontent>
   </tag>
 
     <tag>
         <name>isMaximized</name>
-        <tagclass>org.apache.pluto.driver.tags.IsMaximizedTag</tagclass>
+        <tagclass>kr.acanet.portal.driver.tag.IsMaximizedTag</tagclass>
         <bodycontent>empty</bodycontent>
         <attribute>
             <name>var</name>

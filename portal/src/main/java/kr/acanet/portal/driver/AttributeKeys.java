@@ -43,10 +43,6 @@ public class AttributeKeys {
     public static final String PORTAL_URL_PARSER = "PORTAL_URL_PARSER";
 
     // Constructor -------------------------------------------------------------
-
-    /**
-     * Private constructor that prevents external instantiation.
-     */
     private AttributeKeys() {
 
     }

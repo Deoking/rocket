@@ -25,30 +25,20 @@ package kr.acanet.portal.driver;
  */
 public class AttributeKeys {
 
-    /**
-     * Attribute Key used to bind the application's driver config to the
-     * ServletContext.
-     */
+    //서블릿컨텍스트(ServletContext)에 등록 - 드라이버 설정 
     public static final String DRIVER_CONFIG = "driverConfig";
 
-    /**
-     * Attribute Key used to bind the application's driver admin config
-     * to the ServletContext.
-     */
+    //서블릿컨텍스트(ServletContext)에 등록 - 관리자 설정
     public static final String DRIVER_ADMIN_CONFIG = "driverAdminConfig";
 
-    /**
-     * Attribute Key used to bind the application's portlet container to the
-     * ServletContext.
-     */
+    //서블릿컨텍스트(ServletContext)에 등록 - 포틀릿 컨테이너
     public static final String PORTLET_CONTAINER = "portletContainer";
-
-    /** Attribute key used to bind the current page to servlet request. */
+ 
+    //리퀘스트(HttpServletRequest)에 등록 - 현재 페이지 
     public static final String CURRENT_PAGE = "currentPage";
 
-    /** Attribute key used to bind the portlet title to servlet request. */
-    public static final String PORTLET_TITLE =
-    		"org.apache.pluto.driver.DynamicPortletTitle";
+    //리퀘스트(HttpServletRequest)에 등록 - 포틀릿 타이틀
+    public static final String PORTLET_TITLE = "org.apache.pluto.driver.DynamicPortletTitle";
 
     public static final String PORTAL_URL_PARSER = "PORTAL_URL_PARSER";
 

@@ -1,19 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package kr.acanet.portal.driver.container.impl.resource;
 
 import java.io.IOException;
@@ -33,12 +17,9 @@ import kr.acanet.portal.driver.service.portal.RenderConfig;
  */
 public class ResourceConfigReader {
 
-    private static final Logger LOG = LoggerFactory.getLogger(
-        ResourceConfigReader.class
-    );
+	private static final Logger logger = LoggerFactory.getLogger(ResourceConfigReader.class);
 
-    public static final String CONFIG_FILE =
-        "/WEB-INF/pluto-portal-driver-config.xml";
+    public static final String CONFIG_FILE = "/WEB-INF/configuration/portal-driver-config.xml";
 
 
     private static ResourceConfigReader factory;
@@ -54,7 +35,6 @@ public class ResourceConfigReader {
 
     private ResourceConfigReader() {
         digester = new Digester();
-        // digester.setLogger(LOG);  // Too many log messages.
         digester.setClassLoader(Thread.currentThread().getContextClassLoader());
         init();
     }
@@ -67,9 +47,7 @@ public class ResourceConfigReader {
 // Digester Setup
 
     private void init() {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Setting up digester...");
-        }
+    	logger.debug("Setting up digester...");
         digester.addObjectCreate(
             "pluto-portal-driver",
             ResourceConfig.class

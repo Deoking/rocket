@@ -102,6 +102,8 @@ public class PortalDriverFilter implements Filter {
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
         throws IOException, ServletException {
+    	
+    	// HttpServletReques일경우.. 
         if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
             HttpServletRequest req = (HttpServletRequest) request;
             // Since we must support a 2.3 environment, we can't use

@@ -118,7 +118,7 @@ public class PortalContextStartupListener extends ContextLoaderListener implemen
 	 */
 	public void contextDestroyed(ServletContextEvent event) {
 		ServletContext servletContext = event.getServletContext();
-		logger.info("Shutting down Pluto Portal Driver...");
+		logger.info("Shutting down Portal...");
 		destroyContainer(servletContext);
 		destroyAdminConfiguration(servletContext);
 		destroyDriverConfiguration(servletContext);
@@ -134,12 +134,12 @@ public class PortalContextStartupListener extends ContextLoaderListener implemen
 	 * @param servletContext the servlet context.
 	 */
 	private void destroyContainer(ServletContext servletContext) {
-		logger.info("Shutting down Pluto Portal Driver...");
+		logger.info("Shutting down Portlet Container...");
 		PortletContainer container = (PortletContainer) servletContext.getAttribute(CONTAINER_KEY);
 		if (container != null) {
 			try {
 				container.destroy();
-				logger.info("Pluto Portal Driver shut down.");
+				logger.info("Portlet Container shut down.");
 			} catch (PortletContainerException ex) {
 				logger.error("Unable to shut down portlet container: " + ex.getMessage(), ex);
 			} finally {
@@ -170,7 +170,7 @@ public class PortalContextStartupListener extends ContextLoaderListener implemen
 		if (adminConfig != null) {
 			try {
 				adminConfig.destroy();
-				logger.info("Pluto Portal Admin Config destroyed.");
+				logger.info("Portal Admin Config destroyed.");
 			} catch (DriverConfigurationException ex) {
 				logger.error("Unable to destroy portal admin config: " + ex.getMessage(), ex);
 			} finally {

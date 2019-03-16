@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.acanet.portal.driver.core.PortalRequestContext;
 import kr.acanet.portal.driver.url.PortalURL;
 import kr.acanet.portal.driver.url.PortalURLParameter;
 import kr.acanet.portal.driver.url.PortalURLParser;
@@ -40,8 +41,8 @@ import kr.acanet.portal.driver.url.PortalURLParser;
  */
 public class PortalURLParserImpl implements PortalURLParser {
 
-	/** Logger. */
-    private static final Logger LOG = LoggerFactory.getLogger(PortalURLParserImpl.class);
+	//logger
+		private static final Logger logger = LoggerFactory.getLogger(PortalURLParserImpl.class);
 
     /** The singleton parser instance. */
     private static final PortalURLParser PARSER = new PortalURLParserImpl();
@@ -107,9 +108,7 @@ public class PortalURLParserImpl implements PortalURLParser {
      */
     public PortalURL parse(HttpServletRequest request) {
 
-    	if (LOG.isDebugEnabled()) {
-            LOG.debug("Parsing URL: " + request.getRequestURI());
-        }
+        logger.debug("Parsing URL: {}", request.getRequestURI());
 
         String contextPath = request.getContextPath();
         String servletName = request.getServletPath();
@@ -130,10 +129,8 @@ public class PortalURLParserImpl implements PortalURLParser {
                 return portalURL;
             }
         }
-
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Parsing request pathInfo: " + pathInfo);
-        }
+          
+        logger.debug("Parsing request pathInfo: {}", pathInfo);
 
         StringBuffer renderPath = new StringBuffer();
         StringTokenizer st = new StringTokenizer(pathInfo, "/", false);
@@ -425,7 +422,7 @@ public class PortalURLParserImpl implements PortalURLParser {
         		if (currentValue != null)
         			currentValue = URLEncoder.encode(values[i], "UTF-8");
 			} catch (UnsupportedEncodingException e) {
-				LOG.warn(e.getMessage(),e);
+				logger.warn(e.getMessage(),e);
 			}
         	buffer.append(currentValue != null ? currentValue : "");
             if (i + 1 < values.length) {
@@ -480,10 +477,7 @@ public class PortalURLParserImpl implements PortalURLParser {
      */
     private PortalURLParameter decodeParameter(String name, String value) {
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Decoding parameter: name=" + name
-            		+ ", value=" + value);
-        }
+        logger.debug("Decoding parameter: name = {}, value = {}", name, value);
 
     	// Decode the name into window ID and parameter name.
         String noPrefix = name.substring((PREFIX + PORTLET_ID).length());
@@ -502,7 +496,7 @@ public class PortalURLParserImpl implements PortalURLParser {
         	try {
         		paramValues[i] = URLDecoder.decode(paramValues[i], "UTF-8");
 			} catch (UnsupportedEncodingException e) {
-				LOG.warn(e.getMessage(),e);
+				logger.warn(e.getMessage(),e);
 			}
         }
         // Construct portal URL parameter and return.
@@ -511,10 +505,7 @@ public class PortalURLParserImpl implements PortalURLParser {
 
     private PortalURLParameter decodePublicParameter(String name, String value) {
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Decoding parameter: name=" + name
-            		+ ", value=" + value);
-        }
+        logger.debug("Decoding parameter: name = {}, value = {}", name, value);
 
 //    	// Decode the name into window ID and parameter name.
         String noPrefix = name.substring((PREFIX + PORTLET_ID).length());
@@ -532,7 +523,7 @@ public class PortalURLParserImpl implements PortalURLParser {
         	try {
         		paramValues[i] = URLDecoder.decode(paramValues[i], "UTF-8");
 			} catch (UnsupportedEncodingException e) {
-				LOG.warn(e.getMessage(),e);
+				logger.warn(e.getMessage(),e);
 			}
         }
 

@@ -27,6 +27,7 @@ import kr.acanet.portal.driver.AttributeKeys;
 import kr.acanet.portal.driver.configuration.DriverConfiguration;
 import kr.acanet.portal.driver.url.PortalURL;
 import kr.acanet.portal.driver.url.PortalURLParser;
+import kr.acanet.portal.system.configuration.PortalContextConfiguration;
 
 /**
  * Defines the context of the currentl portal request. Allows for the retrieval
@@ -38,12 +39,10 @@ import kr.acanet.portal.driver.url.PortalURLParser;
  */
 public class PortalRequestContext {
 
-	/** Internal Logger. */
-	private static final Logger LOG = LoggerFactory.getLogger(PortalRequestContext.class);
+	//logger
+	private static final Logger logger = LoggerFactory.getLogger(PortalRequestContext.class);
 
-	/**
-	 * The attribute key to bind the portal environment instance to servlet request.
-	 */
+	//포털환경설정 인스턴스 키값 
 	private final static String REQUEST_KEY = PortalRequestContext.class.getName();
 
 	/** The servletContext of execution. **/
@@ -118,7 +117,7 @@ public class PortalRequestContext {
 				requestedPortalURL = parser.parse(request);
 			} else {
 				String msg = "Driver configuration not found while parsing portal URL!";
-				LOG.error(msg);
+				logger.error(msg);
 				throw new IllegalStateException(msg);
 			}
 		}
